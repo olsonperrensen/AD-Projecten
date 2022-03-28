@@ -1,0 +1,11 @@
+HELO ai.io
+MAIL FROM: <u2@ai.io>
+RCPT TO: <u1@ai.io>
+DATA
+FROM: TheShell
+TO: u1 <u1@ai.io>
+Subject: CLI REPLY 2
+
+THIS IS A REPLY TO THE FIRST CLI SENT VIA TELNET...
+
+.

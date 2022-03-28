@@ -1,0 +1,13 @@
+RAS Security Group 
+Client (uses new user made on DC)
+Added to that group (RAS Server computer ++as well)
+VPN User -> Dial in -> Network... -> allow access
+
+Show on user:
+1. network adapter settings
+2. check if you're connected to domain (field in the middle)
+3. Check IP address given by VPN (DHCP relay works)
+
+Show on RAS:
+1. Routing and Remote Access tab (after completion in Management...)
+2. Users (time logged in) 

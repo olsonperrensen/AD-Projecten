@@ -1,0 +1,38 @@
+Lab 2 - The Correct Way
+Server 1 has a static IP address of 172.72.1.2
+Server 2 has a static IP address of 172.72.2.3
+S1 got first promoted to Domain Controller
+Error: DHCP stopped working - I granted access to it.
+DHCP -> Server -> Action -> Authorize
+
+Client 2 (172.72.2.222) and Client 1 (172.72.1.111) have joined S1
+
+Joining the domain requires either having an user account already created inside the domain for me, or using administrator credentials to log in.
+
+Creating a new account for the domain through "Add an account" on the client does not work. I created a new account for my first connected client, named 2 (with the same password as everyone else)
+
+C:\folder -> Properties -> Sharing -> Advanced Sharing -> Permissions -> UserTwo -> RW
+C:\folder -> Properties -> Permissions -> Edit -> UserTwo -> RW
++ Inheritance internal file
+
+By default, network sharing is turned of on the client and needs administrative rights to be turned on.
+
+AD Sites and Services -> New Site
+Subnets -> New Subnet (MainOffice = 172.72.1.0/24 / BranchOffice = 172.72.2.0/24)
+
+
+S2 cannot join S1's Domain, due to its DNS being attached to S2, and S2 referring to itself.
+
+I temporarily changed S2's primary DNS source to S1 and flushed its ipconfig cache settings in order to contact my AD Domain.
+
+S2 has now joined the same domain.
+When C2 authenticates, S2 (in the same subnet mask) will manage the request.
+echo %logonserver% // from C2, S2 should appear as a result
+
+
+AD Users and Groups -> domain -> Right-click -> New -> Organizational Unit
+I created two users for each inner OU.
+Remote Dev is managed by ITG (software on any ITG user will prove it)
+I forgot to add that I re-made the subnet mappings on the AD Site tab, and replicated them through Server 1. I also found a fix modifying a string in
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters
